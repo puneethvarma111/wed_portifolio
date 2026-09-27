@@ -165,3 +165,152 @@
     display: none;
   }
 }
+
+
+/* Floating Top Controls: Language Switcher + Music Toggle */
+.royal-floating-controls {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.royal-floating-controls .music-toggle {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  z-index: auto !important;
+}
+
+/* Royal Language Switcher Pill */
+.royal-language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: #240912e6;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid var(--royal-gold);
+  border-radius: 999px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+  transition: all 0.3s ease;
+}
+
+.royal-language-switcher:hover {
+  border-color: var(--royal-gold-bright);
+  box-shadow: 0 6px 22px rgba(212, 175, 55, 0.35);
+}
+
+.lang-globe-icon {
+  color: var(--royal-gold-bright);
+  display: flex;
+  align-items: center;
+  margin-right: 2px;
+}
+
+.lang-option-btn {
+  background: transparent;
+  border: none;
+  color: #d8c2aa;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.lang-option-btn:hover {
+  color: #fff;
+}
+
+.lang-option-btn.is-active {
+  background: linear-gradient(135deg, #7a1226, #530816);
+  color: #fff2a3;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(223, 183, 68, 0.4);
+}
+
+.lang-option-btn .telugu-text {
+  font-family: var(--font-telugu-body);
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+}
+
+.lang-separator {
+  color: rgba(201, 166, 106, 0.4);
+  font-size: 0.75rem;
+  user-select: none;
+}
+
+/* Telugu Typography Tokens & Overrides */
+:root {
+  --font-telugu-heading: "Suranna", "Cinzel", Georgia, serif;
+  --font-telugu-body: "Noto Sans Telugu", "Manrope", sans-serif;
+}
+
+body.lang-telugu {
+  font-family: var(--font-telugu-body);
+}
+
+body.lang-telugu .paper-section-title,
+body.lang-telugu .hero-stylish-names,
+body.lang-telugu .closing-monogram-names,
+body.lang-telugu .couple-person-name,
+body.lang-telugu .card-title-heading,
+body.lang-telugu .family-parent-names {
+  font-family: var(--font-telugu-heading) !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.35 !important;
+}
+
+body.lang-telugu .paper-section-eyebrow,
+body.lang-telugu .hero-eyebrow,
+body.lang-telugu .credential-pill,
+body.lang-telugu .family-card-kicker,
+body.lang-telugu .couple-role-tag,
+body.lang-telugu .dial-unit-name,
+body.lang-telugu .card-event-badge {
+  font-family: var(--font-telugu-body) !important;
+  letter-spacing: 0.06em !important;
+}
+
+body.lang-telugu .paper-section-subtitle,
+body.lang-telugu .hero-invitation-message,
+body.lang-telugu .couple-short-bio-large,
+body.lang-telugu .card-description-text,
+body.lang-telugu .blessing-animated-quote,
+body.lang-telugu .venue-blurb {
+  font-family: var(--font-telugu-body) !important;
+  line-height: 1.8 !important;
+  font-style: normal !important;
+}
+
+body.lang-telugu .hero-calligraphy-subtitle {
+  font-family: var(--font-telugu-heading) !important;
+  font-size: 1.45rem !important;
+}
+
+@media (max-width: 640px) {
+  .royal-floating-controls {
+    top: 10px !important;
+    right: 10px !important;
+    gap: 6px !important;
+  }
+  .royal-language-switcher {
+    padding: 4px 8px !important;
+  }
+  .lang-option-btn {
+    padding: 3px 8px !important;
+    font-size: 0.74rem !important;
+  }
+  .royal-floating-controls .music-toggle {
+    padding: 6px 12px !important;
+    font-size: 0.72rem !important;
+  }
+}

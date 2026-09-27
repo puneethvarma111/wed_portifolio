@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { BalajiEmblem } from './BalajiEmblem';
+import { useLanguage } from '../context/LanguageContext';
 
 export const OpeningCeremony = ({ isOpen, onOpen }) => {
   const [stage, setStage] = useState('sealed');
+  const { t } = useLanguage();
 
   const handleOpenClick = () => {
     if (stage === 'sealed') {
@@ -41,7 +42,7 @@ export const OpeningCeremony = ({ isOpen, onOpen }) => {
     <div
       className={`oc-screen oc-${stage}`}
       onClick={handleOpenClick}
-      aria-label="Tap to open divine wedding invitation"
+      aria-label={t.opening.ariaOpen}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => {
@@ -78,15 +79,15 @@ export const OpeningCeremony = ({ isOpen, onOpen }) => {
 
           <div className="oc-card">
             <div className="oc-card-inner">
-              <span className="oc-card-crown">॥ ॐ ॥</span>
-              <p className="oc-card-eyebrow">SRINIVASA KALYANAM</p>
-              <h2 className="oc-card-names">Dr. Yogita &amp; Dr. Sai Vardhan</h2>
+              <span className="oc-card-crown">{t.opening.crown}</span>
+              <p className="oc-card-eyebrow">{t.opening.eyebrow}</p>
+              <h2 className="oc-card-names">{t.opening.names}</h2>
               <div className="oc-card-rule">
                 <span className="oc-card-diamond">◆</span>
               </div>
-              <p className="oc-card-date">25 November 2026</p>
-              <p className="oc-card-place">Rahul Convention · Tirupati</p>
-              <p className="oc-card-script">✦ Under the Sacred Blessings of Lord Sri Venkateswara ✦</p>
+              <p className="oc-card-date">{t.opening.date}</p>
+              <p className="oc-card-place">{t.opening.place}</p>
+              <p className="oc-card-script">{t.opening.script}</p>
             </div>
           </div>
 
@@ -118,8 +119,8 @@ export const OpeningCeremony = ({ isOpen, onOpen }) => {
         </div>
 
         <div className="oc-cue">
-          <p className="oc-cue-title">✦ TAP TO RECEIVE BLESSINGS ✦</p>
-          <p className="oc-cue-sub">Dr. Yogita &amp; Dr. Sai Vardhan cordially invite you to Tirupati</p>
+          <p className="oc-cue-title">{t.opening.cueTitle}</p>
+          <p className="oc-cue-sub">{t.opening.cueSub}</p>
         </div>
       </div>
     </div>

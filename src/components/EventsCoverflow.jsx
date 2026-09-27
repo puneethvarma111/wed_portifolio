@@ -1,66 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Clock, MapPin, ChevronLeft, ChevronRight, Calendar } from 'lucide-react';
+import { Clock, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
-const events = [
-  {
-    title: 'Engagement Ceremony',
-    tag: 'CEREMONY 01',
-    date: '1 November 2026 · 10:30 am - 12:00 noon',
-    place: 'Ekante Bliss, Tirupati',
-    subnote: 'Followed by Lunch',
-    description: 'Two hearts, one promise. The auspicious ring exchange and betrothal celebrating Dr. Yogita Varma & Dr. Sai Vardhan.',
-    image: '/images/couple-arched-hero-tirupati.jpg',
-  },
-  {
-    title: 'Nalugu / Pellikuthuru',
-    tag: 'CEREMONY 02',
-    date: '22 November 2026 · 9:30 am onwards',
-    place: 'At Home',
-    subnote: 'Auspicious Pasupu Rituals',
-    description: 'Sacred turmeric, rosewater, and traditional Telugu Mangala Snanam blessings as our beloved Dr. Yogita is adorned as the bride.',
-    image: '/images/event-hands.jpg',
-  },
-  {
-    title: 'Mehendi Celebration',
-    tag: 'CEREMONY 03',
-    date: '23 November 2026 · Daytime',
-    place: 'At Home',
-    subnote: 'Music & Fragrant Henna',
-    description: 'Intricate deep crimson bridal mehendi, filled with hidden names, fragrant jasmine strings, and cheerful celebration.',
-    image: '/images/couple-flowers.jpg',
-  },
-  {
-    title: 'Sangeet & Cocktail Party',
-    tag: 'CEREMONY 04',
-    date: '23 November 2026 · 6:30 pm onwards',
-    place: 'Memories Box, Tirupati',
-    subnote: 'Music, Cocktails & Dancing',
-    description: 'An electric evening of live music, joyous family dance choreographies, cocktails, and cheerful toasts into the night!',
-    image: '/images/couple-nikkah.jpg',
-  },
-  {
-    title: 'The Wedding Reception',
-    tag: 'CEREMONY 05',
-    date: '24 November 2026 · 7:30 pm onwards',
-    place: 'Rahul Convention, Tirupati',
-    subnote: 'Grand Dinner & Felicitations',
-    description: 'A magnificent royal evening welcoming guests, dignitaries, and loved ones with a sumptuous feast and musical melodies.',
-    image: '/images/golden-vimana-tirupati.jpg',
-  },
-  {
-    title: 'Sacred Kalyanam (Marriage)',
-    tag: 'CEREMONY 06',
-    date: '25 November 2026 · 8:00 am - 12:00 pm',
-    place: 'Rahul Convention, Tirupati',
-    subnote: 'Holy Muhurtham & Talambralu',
-    description: 'The divine Srinivasa Kalyanam, sacred Jeelakarra Bellam, Mangalya Dharana, and holy Saptapadi under Vedic chants and Lord Balaji’s grace.',
-    image: '/images/event-saat-phere.jpg',
-  },
+const eventImages = [
+  '/images/couple-arched-hero-tirupati.jpg',
+  '/images/event-hands.jpg',
+  '/images/couple-flowers.jpg',
+  '/images/couple-nikkah.jpg',
+  '/images/golden-vimana-tirupati.jpg',
+  '/images/event-saat-phere.jpg',
 ];
 
 export const EventsCoverflow = () => {
   const [activeIdx, setActiveIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const { t } = useLanguage();
+
+  const events = t.itinerary.events.map((ev, i) => ({
+    ...ev,
+    image: eventImages[i] || eventImages[0],
+  }));
 
   useEffect(() => {
     if (isPaused) return;
@@ -68,7 +27,7 @@ export const EventsCoverflow = () => {
       setActiveIdx((prev) => (prev + 1) % events.length);
     }, 4200);
     return () => window.clearInterval(interval);
-  }, [isPaused]);
+  }, [isPaused, events.length]);
 
   const handlePrev = () => {
     setActiveIdx((prev) => (prev - 1 + events.length) % events.length);
@@ -88,12 +47,12 @@ export const EventsCoverflow = () => {
       onTouchEnd={() => setIsPaused(false)}
     >
       <div className="section-header-centered reveal">
-        <p className="paper-section-eyebrow">05 · THE AUSPICIOUS ITINERARY</p>
+        <p className="paper-section-eyebrow">{t.itinerary.eyebrow}</p>
         <h2 className="paper-section-title" id="events-title">
-          The Wedding Celebrations
+          {t.itinerary.title}
         </h2>
         <p className="paper-section-subtitle">
-          Six joyous milestones from Engagement to the Holy Kalyanam. The deck advances automatically — tap any event to explore.
+          {t.itinerary.subtitle}
         </p>
       </div>
 
@@ -114,7 +73,7 @@ export const EventsCoverflow = () => {
 
             return (
               <div
-                key={event.title}
+                key={idx}
                 className={cardClass}
                 style={{ '--offset': offset }}
                 onClick={() => setActiveIdx(idx)}
@@ -155,7 +114,7 @@ export const EventsCoverflow = () => {
                   <div className="card-details-compact">
                     <h4 className="compact-side-title">{event.title}</h4>
                     <span className="compact-date-badge">{event.date.split('·')[0]}</span>
-                    <span className="compact-tap-hint">✦ Tap to view details ✦</span>
+                    <span className="compact-tap-hint">{t.itinerary.tapHint}</span>
                   </div>
                 </div>
               </div>
@@ -169,7 +128,7 @@ export const EventsCoverflow = () => {
           type="button"
           className="coverflow-arrow-btn"
           onClick={handlePrev}
-          aria-label="Previous celebration"
+          aria-label={t.itinerary.prevAria}
         >
           <ChevronLeft size={22} strokeWidth={1.5} />
         </button>
@@ -190,7 +149,7 @@ export const EventsCoverflow = () => {
           type="button"
           className="coverflow-arrow-btn"
           onClick={handleNext}
-          aria-label="Next celebration"
+          aria-label={t.itinerary.nextAria}
         >
           <ChevronRight size={22} strokeWidth={1.5} />
         </button>

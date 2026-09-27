@@ -1,46 +1,46 @@
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { X, ZoomIn } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
-const galleryItems = [
+const galleryImages = [
   {
     image: '/images/yogitha_sai_vardan_eng.jpeg',
     alt: 'Save The Date - Engagement Invitation of Dr. Yogita Varma & Dr. Sai Vardhan',
-    caption: 'Official Engagement Card · Ekanta Bliss',
-    tag: 'Engagement',
   },
   {
     image: '/images/list_of_venue.jpeg',
     alt: 'Wedding Itinerary and Venue Schedule of Dr. Yogita Varma & Dr. Sai Vardhan',
-    caption: 'Wedding Schedule & Venues · Tirupati',
-    tag: 'Celebration Itinerary',
   },
   {
     image: '/images/golden-vimana-tirupati.jpg',
     alt: 'Ananda Nilayam Golden Vimanam of Tirumala Temple',
-    caption: 'Ananda Nilayam · Holy Tirumala',
-    tag: 'Divine Abode',
   },
   {
     image: '/images/event-saat-phere.jpg',
     alt: 'Sacred Kalyanam and Mangalya Dharana moments',
-    caption: 'Sacred Kalyanam Rituals',
-    tag: 'Holy Muhurtham',
   },
 ];
 
 export const CherishedGlimpses = () => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const { t } = useLanguage();
+
+  const galleryItems = galleryImages.map((imgObj, i) => ({
+    ...imgObj,
+    caption: t.glimpses.items[i]?.caption || '',
+    tag: t.glimpses.items[i]?.tag || '',
+  }));
 
   return (
     <section className="paper-section dump-paper-section" aria-labelledby="dump-title">
       <div className="section-header-centered reveal">
-        <p className="paper-section-eyebrow">04 · SACRED MOMENTS &amp; INVITATIONS</p>
+        <p className="paper-section-eyebrow">{t.glimpses.eyebrow}</p>
         <h2 className="paper-section-title" id="dump-title">
-          Cherished Glimpses
+          {t.glimpses.title}
         </h2>
         <p className="paper-section-subtitle">
-          Explore the official invitations, sacred Tirumala traditions, and memorable glimpses from our road to forever.
+          {t.glimpses.subtitle}
         </p>
       </div>
 
@@ -121,7 +121,7 @@ export const CherishedGlimpses = () => {
                 className="modal-close-btn"
                 type="button"
                 onClick={() => setSelectedPhoto(null)}
-                aria-label="Close photo view"
+                aria-label={t.glimpses.closePhoto}
               >
                 <X size={18} strokeWidth={1.5} />
               </button>

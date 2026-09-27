@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 function useCountdown(targetIso = '2026-11-25T08:00:00+05:30') {
   const getRemainingTime = () => {
@@ -25,23 +26,24 @@ function useCountdown(targetIso = '2026-11-25T08:00:00+05:30') {
 
 export const CountdownSection = () => {
   const timeLeft = useCountdown('2026-11-25T08:00:00+05:30');
+  const { t } = useLanguage();
 
   const dials = [
-    { label: 'DAYS', value: timeLeft.days, max: 365 },
-    { label: 'HRS', value: timeLeft.hours, max: 24 },
-    { label: 'MIN', value: timeLeft.minutes, max: 60 },
-    { label: 'SEC', value: timeLeft.seconds, max: 60 },
+    { key: 'days', label: t.countdown.units.days, value: timeLeft.days, max: 365 },
+    { key: 'hrs', label: t.countdown.units.hrs, value: timeLeft.hours, max: 24 },
+    { key: 'min', label: t.countdown.units.min, value: timeLeft.minutes, max: 60 },
+    { key: 'sec', label: t.countdown.units.sec, value: timeLeft.seconds, max: 60 },
   ];
 
   return (
     <section className="paper-section countdown-celestial-section reveal" id="waiting" aria-labelledby="waiting-title">
       <div className="section-header-centered">
-        <p className="paper-section-eyebrow">01 · THE AUSPICIOUS MUHURTHAM</p>
+        <p className="paper-section-eyebrow">{t.countdown.eyebrow}</p>
         <h2 className="paper-section-title" id="waiting-title">
-          Counting Every Sacred Second
+          {t.countdown.title}
         </h2>
         <p className="paper-section-subtitle">
-          Awaiting the sacred Kalyanam, Mangalya Dharana, and Akshatha blessings on Wednesday, 25 November 2026 at Rahul Convention, Tirupati.
+          {t.countdown.subtitle}
         </p>
       </div>
 
@@ -54,8 +56,8 @@ export const CountdownSection = () => {
             return (
               <div
                 className="celestial-dial-card"
-                data-testid={`countdown-${dial.label.toLowerCase()}`}
-                key={dial.label}
+                data-testid={`countdown-${dial.key}`}
+                key={dial.key}
               >
                 <div className="dial-svg-box">
                   <svg className="dial-ring-svg" viewBox="0 0 130 130">

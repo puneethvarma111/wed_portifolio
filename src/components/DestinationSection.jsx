@@ -1,16 +1,19 @@
 import React from 'react';
-import { MapPin, Navigation, Landmark } from 'lucide-react';
+import { MapPin, Landmark } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const DestinationSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="paper-section venue-paper-section" aria-labelledby="venue-title">
       <div className="section-header-centered reveal">
-        <p className="paper-section-eyebrow">06 · THE SACRED DESTINATION</p>
+        <p className="paper-section-eyebrow">{t.destination.eyebrow}</p>
         <h2 className="paper-section-title" id="venue-title">
-          Tirupati · Abode of Lord Venkateswara
+          {t.destination.title}
         </h2>
         <p className="paper-section-subtitle">
-          At the sacred foothills of the Seven Hills, where holy bells chime and divine blessings shower upon every new journey.
+          {t.destination.subtitle}
         </p>
       </div>
 
@@ -25,7 +28,7 @@ export const DestinationSection = () => {
 
         <div className="venue-info-box">
           <p className="venue-blurb">
-            We are overjoyed to welcome you to holy Tirupati. May you carry the divine blessings of Lord Sri Balaji and Goddess Sri Padmavathi Devi as you join our celebrations and bless the newly wedded couple.
+            {t.destination.blurb}
           </p>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '18px' }}>
@@ -33,9 +36,9 @@ export const DestinationSection = () => {
               <Landmark size={18} strokeWidth={1.5} color="var(--royal-wine)" />
               <div>
                 <strong style={{ display: 'block', color: 'var(--royal-wine)', fontSize: '1rem' }}>
-                  Marriage &amp; Reception Venue:
+                  {t.destination.marriageLabel}
                 </strong>
-                <span>Rahul Convention, Yogimallavaram, Tiruchanur, Tirupati, Andhra Pradesh 517503</span>
+                <span>{t.destination.marriageAddress}</span>
               </div>
             </div>
 
@@ -43,9 +46,9 @@ export const DestinationSection = () => {
               <MapPin size={18} strokeWidth={1.5} color="var(--royal-wine)" />
               <div>
                 <strong style={{ display: 'block', color: 'var(--royal-wine)', fontSize: '1rem' }}>
-                  Engagement Venue:
+                  {t.destination.engLabel}
                 </strong>
-                <span>Ekante Bliss (IHCL SeleQtions), Near Ramanuja Circle, Renigunta Road, Tirupati</span>
+                <span>{t.destination.engAddress}</span>
               </div>
             </div>
           </div>
@@ -53,7 +56,7 @@ export const DestinationSection = () => {
           <div className="venue-map-wrapper">
             <iframe
               className="venue-map-iframe"
-              title="Google Map showing Rahul Convention in Tirupati"
+              title={t.destination.mapTitle}
               src="https://www.google.com/maps?q=Rahul+Convention+Tiruchanur+Tirupati&output=embed"
               loading="lazy"
             />

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAmbientMusic } from './useAmbientMusic';
+import { LanguageProvider } from './context/LanguageContext';
+import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { MusicToggle } from './components/MusicToggle';
 import { OpeningCeremony } from './components/OpeningCeremony';
 import { HeroSection } from './components/HeroSection';
@@ -12,7 +14,7 @@ import { DestinationSection } from './components/DestinationSection';
 import { BlessingsSection } from './components/BlessingsSection';
 import { ClosingFooter } from './components/ClosingFooter';
 
-export default function App() {
+function WeddingInvitationApp() {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedProfile, setExpandedProfile] = useState(null);
   const { isMuted, startMusic, toggleMute } = useAmbientMusic();
@@ -47,8 +49,11 @@ export default function App() {
         <div className="mandap-vignette-overlay" />
       </div>
 
-      {/* Ambient Music Toggle Button */}
-      <MusicToggle isMuted={isMuted} onToggle={toggleMute} />
+      {/* Floating Top Controls: Language Switcher (EN | తెలుగు) & Music Player */}
+      <div className="royal-floating-controls">
+        <LanguageSwitcher />
+        <MusicToggle isMuted={isMuted} onToggle={toggleMute} />
+      </div>
 
       {/* Opening Wax-Sealed Envelope Ceremony */}
       <OpeningCeremony isOpen={isOpen} onOpen={handleOpenCeremony} />
@@ -152,5 +157,13 @@ export default function App() {
         </main>
       </div>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <WeddingInvitationApp />
+    </LanguageProvider>
   );
 }

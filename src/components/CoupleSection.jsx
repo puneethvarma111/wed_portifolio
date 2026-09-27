@@ -1,38 +1,41 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
-
-const coupleData = {
-  yogita: {
-    name: 'Dr. Yogita Varma',
-    role: 'The Bride · MBBS, MD (General Medicine)',
-    image: '/images/bride-makeup.jpg',
-    alt: 'Portrait of Dr. Yogita Varma',
-    short: 'A compassionate physician with a healing touch, Dr. Yogita brings radiant warmth, gentle wisdom, and grace to every life she touches.',
-    fullDetail: 'Dedicated to the art and science of healing as an MD in General Medicine, Dr. Yogita believes that kindness and empathy are the greatest remedies. She cherishes family traditions, sacred rituals, and the warmth of loved ones gathered together.',
-  },
-  saivardhan: {
-    name: 'Dr. Sai Vardhan',
-    role: 'The Groom · MBBS, MD (Radio Diagnosis)',
-    image: '/images/groom-sherwani.jpg',
-    alt: 'Portrait of Dr. Sai Vardhan',
-    short: 'A brilliant diagnostic radiologist with an eye for precision, Dr. Sai brings infectious joy, steady strength, and enduring devotion to their journey.',
-    fullDetail: 'Specializing in Radio Diagnosis, Dr. Sai balances scientific precision with a warm, lively humor. He is adventurous, thoughtful, and deeply devoted, eagerly looking forward to starting this blessed chapter in holy Tirupati.',
-  },
-};
+import { useLanguage } from '../context/LanguageContext';
 
 export const CoupleSection = ({ expandedProfile, setExpandedProfile }) => {
+  const { t } = useLanguage();
+
+  const coupleData = {
+    yogita: {
+      name: t.couple.bride.name,
+      role: t.couple.bride.role,
+      image: '/images/bride-makeup.jpg',
+      alt: `Portrait of ${t.couple.bride.name}`,
+      short: t.couple.bride.short,
+      fullDetail: t.couple.bride.fullDetail,
+    },
+    saivardhan: {
+      name: t.couple.groom.name,
+      role: t.couple.groom.role,
+      image: '/images/groom-sherwani.jpg',
+      alt: `Portrait of ${t.couple.groom.name}`,
+      short: t.couple.groom.short,
+      fullDetail: t.couple.groom.fullDetail,
+    },
+  };
+
   const activeProfile = expandedProfile ? coupleData[expandedProfile] : null;
 
   return (
     <section className="paper-section couple-paper-section" aria-labelledby="couple-title">
       <div className="section-header-centered reveal">
-        <p className="paper-section-eyebrow">03 · TWO HEARTS · ONE DESTINY</p>
+        <p className="paper-section-eyebrow">{t.couple.eyebrow}</p>
         <h2 className="paper-section-title" id="couple-title">
-          Healers in Love
+          {t.couple.title}
         </h2>
         <p className="paper-section-subtitle">
-          Two dedicated doctors united by destiny, shared dreams, and the sacred blessings of Tirupati.
+          {t.couple.subtitle}
         </p>
       </div>
 
@@ -42,16 +45,16 @@ export const CoupleSection = ({ expandedProfile, setExpandedProfile }) => {
             type="button"
             className="couple-arch-button"
             onClick={() => setExpandedProfile('yogita')}
-            aria-label="View portrait and story of Dr. Yogita Varma"
+            aria-label={`View portrait and story of ${coupleData.yogita.name}`}
           >
             <div className="arch-photo-box hover-lift-img">
               <img src={coupleData.yogita.image} alt={coupleData.yogita.alt} />
-              <div className="arch-hover-badge">View Story</div>
+              <div className="arch-hover-badge">{t.couple.viewStory}</div>
             </div>
           </button>
           <div className="couple-card-text">
             <span className="couple-role-tag">{coupleData.yogita.role}</span>
-            <h3 className="couple-person-name">Dr. Yogita Varma</h3>
+            <h3 className="couple-person-name">{coupleData.yogita.name}</h3>
             <p className="couple-short-bio-large">{coupleData.yogita.short}</p>
           </div>
         </article>
@@ -61,16 +64,16 @@ export const CoupleSection = ({ expandedProfile, setExpandedProfile }) => {
             type="button"
             className="couple-arch-button"
             onClick={() => setExpandedProfile('saivardhan')}
-            aria-label="View portrait and story of Dr. Sai Vardhan"
+            aria-label={`View portrait and story of ${coupleData.saivardhan.name}`}
           >
             <div className="arch-photo-box hover-lift-img">
               <img src={coupleData.saivardhan.image} alt={coupleData.saivardhan.alt} />
-              <div className="arch-hover-badge">View Story</div>
+              <div className="arch-hover-badge">{t.couple.viewStory}</div>
             </div>
           </button>
           <div className="couple-card-text">
             <span className="couple-role-tag">{coupleData.saivardhan.role}</span>
-            <h3 className="couple-person-name">Dr. Sai Vardhan</h3>
+            <h3 className="couple-person-name">{coupleData.saivardhan.name}</h3>
             <p className="couple-short-bio-large">{coupleData.saivardhan.short}</p>
           </div>
         </article>
@@ -90,7 +93,7 @@ export const CoupleSection = ({ expandedProfile, setExpandedProfile }) => {
                 className="modal-close-btn"
                 type="button"
                 onClick={() => setExpandedProfile(null)}
-                aria-label="Close portrait modal"
+                aria-label={t.couple.closeModal}
               >
                 <X size={18} strokeWidth={1.5} />
               </button>

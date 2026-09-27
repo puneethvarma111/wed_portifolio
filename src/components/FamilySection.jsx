@@ -1,24 +1,27 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const FamilySection = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="paper-section family-paper-section" aria-labelledby="family-title">
       <div className="section-header-centered reveal">
-        <p className="paper-section-eyebrow">02 · WITH OUR FAMILIES &amp; BLESSINGS</p>
+        <p className="paper-section-eyebrow">{t.families.eyebrow}</p>
         <h2 className="paper-section-title" id="family-title">
-          United by Tradition &amp; Divine Grace
+          {t.families.title}
         </h2>
         <p className="paper-section-subtitle">
-          With the divine blessings of Lord Sri Venkateswara Swamy &amp; Sri Padmavathi Devi, two families unite in joy, love, and sacred rituals.
+          {t.families.subtitle}
         </p>
       </div>
 
       <div className="family-cards-grid reveal">
         <div className="family-royal-card">
-          <span className="family-card-kicker">With love from the Bride’s Family</span>
-          <strong className="family-parent-names">The Varma Family</strong>
+          <span className="family-card-kicker">{t.families.brideKicker}</span>
+          <strong className="family-parent-names">{t.families.brideFamily}</strong>
           <p style={{ marginTop: '8px', fontSize: '0.98rem', color: 'var(--ink-muted)', fontStyle: 'italic' }}>
-            Cordially seeking your presence for our beloved daughter Dr. Yogita
+            {t.families.brideNote}
           </p>
         </div>
 
@@ -31,10 +34,10 @@ export const FamilySection = () => {
         </div>
 
         <div className="family-royal-card">
-          <span className="family-card-kicker">With love from the Groom’s Family</span>
-          <strong className="family-parent-names">The Vardhan Family</strong>
+          <span className="family-card-kicker">{t.families.groomKicker}</span>
+          <strong className="family-parent-names">{t.families.groomFamily}</strong>
           <p style={{ marginTop: '8px', fontSize: '0.98rem', color: 'var(--ink-muted)', fontStyle: 'italic' }}>
-            Welcoming you with warm hearts to bless our dear son Dr. Sai Vardhan
+            {t.families.groomNote}
           </p>
         </div>
       </div>

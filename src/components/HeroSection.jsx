@@ -1,8 +1,11 @@
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
 import { BalajiEmblem } from './BalajiEmblem';
+import { useLanguage } from '../context/LanguageContext';
 
 export const HeroSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="hero-paper-section" id="welcome" tabIndex={-1} aria-labelledby="welcome-title">
       <div className="hero-paper-inner reveal">
@@ -47,30 +50,28 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        <p className="hero-calligraphy-subtitle">✦ Two Souls · One Journey · A Brighter Tomorrow ✦</p>
-        <p className="hero-eyebrow">TIRUPATI · 25 NOVEMBER 2026</p>
+        <p className="hero-calligraphy-subtitle">{t.hero.subtitle}</p>
+        <p className="hero-eyebrow">{t.hero.eyebrow}</p>
 
         <h1 id="welcome-title" className="hero-stylish-names">
-          Dr. Yogita <span className="stylish-ampersand">&amp;</span> Dr. Sai Vardhan
+          {t.hero.names}
         </h1>
 
         <div className="doctor-credentials-banner">
-          <span className="credential-pill">Dr. Yogita Varma · MBBS, MD (General Medicine)</span>
+          <span className="credential-pill">{t.hero.brideCred}</span>
           <span className="credential-divider">✦</span>
-          <span className="credential-pill">Dr. Sai Vardhan · MBBS, MD (Radio Diagnosis)</span>
+          <span className="credential-pill">{t.hero.groomCred}</span>
         </div>
 
-        <p className="hero-invitation-message">
-          With the divine grace of Lord Sri Venkateswara Swamy and Sri Padmavathi Devi, under the sacred shadows of the Seshachalam Hills, we joyfully invite you to celebrate the holy union of our hearts in Tirupati.
-        </p>
+        <p className="hero-invitation-message">{t.hero.message}</p>
 
         <a
           className="hero-scroll-pill"
           href="#waiting"
-          aria-label="Scroll to the countdown and auspicious muhurtham section"
+          aria-label={t.hero.ctaAria}
           data-testid="link-scroll-countdown"
         >
-          <span>Explore The Kalyanam</span>
+          <span>{t.hero.cta}</span>
           <ArrowDown size={14} strokeWidth={1.5} aria-hidden="true" />
         </a>
       </div>
