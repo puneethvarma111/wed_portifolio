@@ -1,21 +1,36 @@
 import React from 'react';
 
-export const BalajiEmblem = ({ size = 'medium', showMantra = true, className = '' }) => {
+export const BalajiEmblem = ({ size = 'medium', showMantra = true, variant = 'padam', className = '' }) => {
   const dimensions = {
-    small: { width: 140, height: 70 },
-    medium: { width: 220, height: 110 },
-    large: { width: 320, height: 160 },
-  }[size] || { width: 220, height: 110 };
+    small: { width: 140, height: 70, padamSize: 96 },
+    medium: { width: 220, height: 110, padamSize: 156 },
+    large: { width: 320, height: 160, padamSize: 220 },
+  }[size] || { width: 220, height: 110, padamSize: 156 };
 
   return (
     <div className={`balaji-divine-emblem ${className}`} style={{ textAlign: 'center' }}>
-      <svg
-        viewBox="0 0 340 160"
-        width={dimensions.width}
-        height={dimensions.height}
-        className="balaji-emblem-svg"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      {variant === 'padam' ? (
+        <div className="vishnu-padam-medallion-container">
+          <div
+            className="vishnu-padam-gold-frame"
+            style={{ width: dimensions.padamSize, height: dimensions.padamSize }}
+          >
+            <img
+              src="/images/traditional-vishnu-padam-master.jpg"
+              alt="Traditional Vaishnavite Vishnu Padam — శ్రీవారి దివ్య పాదాలు"
+              className="vishnu-padam-artwork"
+              loading="eager"
+            />
+          </div>
+        </div>
+      ) : (
+        <svg
+          viewBox="0 0 340 160"
+          width={dimensions.width}
+          height={dimensions.height}
+          className="balaji-emblem-svg"
+          xmlns="http://www.w3.org/2000/svg"
+        >
         <defs>
           {/* Rich Radiant Gold Gradient */}
           <linearGradient id="goldRadiant" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -233,6 +248,7 @@ export const BalajiEmblem = ({ size = 'medium', showMantra = true, className = '
           />
         </g>
       </svg>
+      )}
 
       {showMantra && (
         <div className="balaji-mantra-banner">

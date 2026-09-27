@@ -71,8 +71,8 @@ export const OpeningCeremony = ({ isOpen, onOpen }) => {
             </svg>
             <div className="oc-wax-seal">
               <img
-                src="/images/gold-heart-seal-clean.png"
-                alt="Royal Gold Seal"
+                src="/images/gold-vishnu-padam-seal.png"
+                alt="శ్రీవారి పాదాలు — Traditional Vaishnavite Vishnu Padam Royal Seal"
               />
             </div>
           </div>
