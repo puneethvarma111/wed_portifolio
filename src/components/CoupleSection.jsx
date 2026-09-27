@@ -3,21 +3,21 @@ import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
 
 const coupleData = {
-  meera: {
-    name: 'Meera',
-    role: 'The Bride',
+  yogita: {
+    name: 'Dr. Yogita Varma',
+    role: 'The Bride · MBBS, MD (General Medicine)',
     image: '/images/bride-makeup.jpg',
-    alt: 'Portrait of Meera',
-    short: 'She notices the small things, brings warmth wherever she goes, and turns ordinary moments into unforgettable celebrations.',
-    fullDetail: 'She brings joy and grace to every room she walks into. Meera believes the best days are woven together from laughter, thoughtful rituals, and the warmth of the people who matter most.',
+    alt: 'Portrait of Dr. Yogita Varma',
+    short: 'A compassionate physician with a healing touch, Dr. Yogita brings radiant warmth, gentle wisdom, and grace to every life she touches.',
+    fullDetail: 'Dedicated to the art and science of healing as an MD in General Medicine, Dr. Yogita believes that kindness and empathy are the greatest remedies. She cherishes family traditions, sacred rituals, and the warmth of loved ones gathered together.',
   },
-  aarav: {
-    name: 'Aarav',
-    role: 'The Groom',
+  saivardhan: {
+    name: 'Dr. Sai Vardhan',
+    role: 'The Groom · MBBS, MD (Radio Diagnosis)',
     image: '/images/groom-sherwani.jpg',
-    alt: 'Portrait of Aarav',
-    short: 'He carries the steady laugh, the long stories, and an instinct for making every place feel a little more like home.',
-    fullDetail: 'Steady, adventurous, and always knowing when to stay a little longer. Aarav finds joy in spontaneous moments and brings enduring strength and laughter to every step of this journey.',
+    alt: 'Portrait of Dr. Sai Vardhan',
+    short: 'A brilliant diagnostic radiologist with an eye for precision, Dr. Sai brings infectious joy, steady strength, and enduring devotion to their journey.',
+    fullDetail: 'Specializing in Radio Diagnosis, Dr. Sai balances scientific precision with a warm, lively humor. He is adventurous, thoughtful, and deeply devoted, eagerly looking forward to starting this blessed chapter in holy Tirupati.',
   },
 };
 
@@ -27,10 +27,13 @@ export const CoupleSection = ({ expandedProfile, setExpandedProfile }) => {
   return (
     <section className="paper-section couple-paper-section" aria-labelledby="couple-title">
       <div className="section-header-centered reveal">
-        <p className="paper-section-eyebrow">03 · THE TWO OF US</p>
+        <p className="paper-section-eyebrow">03 · TWO HEARTS · ONE DESTINY</p>
         <h2 className="paper-section-title" id="couple-title">
-          A Good Story Needs Two
+          Healers in Love
         </h2>
+        <p className="paper-section-subtitle">
+          Two dedicated doctors united by destiny, shared dreams, and the sacred blessings of Tirupati.
+        </p>
       </div>
 
       <div className="couple-large-cards-container reveal">
@@ -38,18 +41,18 @@ export const CoupleSection = ({ expandedProfile, setExpandedProfile }) => {
           <button
             type="button"
             className="couple-arch-button"
-            onClick={() => setExpandedProfile('meera')}
-            aria-label="View portrait of Meera"
+            onClick={() => setExpandedProfile('yogita')}
+            aria-label="View portrait and story of Dr. Yogita Varma"
           >
             <div className="arch-photo-box hover-lift-img">
-              <img src={coupleData.meera.image} alt={coupleData.meera.alt} />
+              <img src={coupleData.yogita.image} alt={coupleData.yogita.alt} />
               <div className="arch-hover-badge">View Story</div>
             </div>
           </button>
           <div className="couple-card-text">
-            <span className="couple-role-tag">{coupleData.meera.role}</span>
-            <h3 className="couple-person-name">Meera</h3>
-            <p className="couple-short-bio-large">{coupleData.meera.short}</p>
+            <span className="couple-role-tag">{coupleData.yogita.role}</span>
+            <h3 className="couple-person-name">Dr. Yogita Varma</h3>
+            <p className="couple-short-bio-large">{coupleData.yogita.short}</p>
           </div>
         </article>
 
@@ -57,18 +60,18 @@ export const CoupleSection = ({ expandedProfile, setExpandedProfile }) => {
           <button
             type="button"
             className="couple-arch-button"
-            onClick={() => setExpandedProfile('aarav')}
-            aria-label="View portrait of Aarav"
+            onClick={() => setExpandedProfile('saivardhan')}
+            aria-label="View portrait and story of Dr. Sai Vardhan"
           >
             <div className="arch-photo-box hover-lift-img">
-              <img src={coupleData.aarav.image} alt={coupleData.aarav.alt} />
+              <img src={coupleData.saivardhan.image} alt={coupleData.saivardhan.alt} />
               <div className="arch-hover-badge">View Story</div>
             </div>
           </button>
           <div className="couple-card-text">
-            <span className="couple-role-tag">{coupleData.aarav.role}</span>
-            <h3 className="couple-person-name">Aarav</h3>
-            <p className="couple-short-bio-large">{coupleData.aarav.short}</p>
+            <span className="couple-role-tag">{coupleData.saivardhan.role}</span>
+            <h3 className="couple-person-name">Dr. Sai Vardhan</h3>
+            <p className="couple-short-bio-large">{coupleData.saivardhan.short}</p>
           </div>
         </article>
       </div>

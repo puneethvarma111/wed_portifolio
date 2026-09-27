@@ -1,51 +1,155 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
+import { X, ZoomIn } from 'lucide-react';
 
 const galleryItems = [
   {
-    image: '/images/couple-flowers.jpg',
-    alt: 'Aarav and Meera among flowers',
-    caption: 'The beginning of a garden',
+    image: '/images/yogitha_sai_vardan_eng.jpeg',
+    alt: 'Save The Date - Engagement Invitation of Dr. Yogita Varma & Dr. Sai Vardhan',
+    caption: 'Official Engagement Card · Ekanta Bliss',
+    tag: 'Engagement',
   },
   {
-    image: '/images/couple-temple.jpg',
-    alt: 'Aarav and Meera outside a temple',
-    caption: 'Under old arches',
+    image: '/images/list_of_venue.jpeg',
+    alt: 'Wedding Itinerary and Venue Schedule of Dr. Yogita Varma & Dr. Sai Vardhan',
+    caption: 'Wedding Schedule & Venues · Tirupati',
+    tag: 'Celebration Itinerary',
   },
   {
-    image: '/images/couple-nikkah.jpg',
-    alt: 'Aarav and Meera in a quiet wedding moment',
-    caption: 'The quiet yes',
+    image: '/images/golden-vimana-tirupati.jpg',
+    alt: 'Ananda Nilayam Golden Vimanam of Tirumala Temple',
+    caption: 'Ananda Nilayam · Holy Tirumala',
+    tag: 'Divine Abode',
   },
   {
-    image: '/images/event-hands.jpg',
-    alt: 'Hands gathered together at the wedding',
-    caption: 'Many hands, one day',
+    image: '/images/event-saat-phere.jpg',
+    alt: 'Sacred Kalyanam and Mangalya Dharana moments',
+    caption: 'Sacred Kalyanam Rituals',
+    tag: 'Holy Muhurtham',
   },
 ];
 
 export const CherishedGlimpses = () => {
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
+
   return (
     <section className="paper-section dump-paper-section" aria-labelledby="dump-title">
       <div className="section-header-centered reveal">
-        <p className="paper-section-eyebrow">04 · MOMENTS IN TIME</p>
+        <p className="paper-section-eyebrow">04 · SACRED MOMENTS &amp; INVITATIONS</p>
         <h2 className="paper-section-title" id="dump-title">
           Cherished Glimpses
         </h2>
         <p className="paper-section-subtitle">
-          Unfiltered frames from our story together.
+          Explore the official invitations, sacred Tirumala traditions, and memorable glimpses from our road to forever.
         </p>
       </div>
 
       <div className="photo-dump-refined-grid reveal">
         {galleryItems.map((item, index) => (
-          <figure className="refined-photo-card" key={index}>
-            <div className="photo-inner-crop">
+          <figure
+            className="refined-photo-card"
+            key={index}
+            onClick={() => setSelectedPhoto(item)}
+            style={{ cursor: 'pointer' }}
+            role="button"
+            tabIndex={0}
+            aria-label={`View ${item.caption}`}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setSelectedPhoto(item);
+              }
+            }}
+          >
+            <div className="photo-inner-crop" style={{ position: 'relative' }}>
               <img src={item.image} alt={item.alt} />
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '10px',
+                  background: 'rgba(90, 10, 26, 0.75)',
+                  color: '#FAF4E6',
+                  borderRadius: '999px',
+                  padding: '4px 10px',
+                  fontSize: '0.74rem',
+                  fontFamily: 'var(--font-heading)',
+                  letterSpacing: '0.1em',
+                  backdropFilter: 'blur(4px)',
+                }}
+              >
+                {item.tag}
+              </div>
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '10px',
+                  right: '10px',
+                  background: 'rgba(0,0,0,0.5)',
+                  color: '#fff',
+                  borderRadius: '50%',
+                  width: '28px',
+                  height: '28px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <ZoomIn size={14} />
+              </div>
             </div>
             <figcaption>{item.caption}</figcaption>
           </figure>
         ))}
       </div>
+
+      {selectedPhoto &&
+        typeof document !== 'undefined' &&
+        createPortal(
+          <div
+            className="profile-modal-backdrop"
+            role="dialog"
+            aria-modal="true"
+            onClick={() => setSelectedPhoto(null)}
+          >
+            <div
+              className="profile-modal-card"
+              style={{ maxWidth: '780px', textAlign: 'center', padding: '24px' }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                className="modal-close-btn"
+                type="button"
+                onClick={() => setSelectedPhoto(null)}
+                aria-label="Close photo view"
+              >
+                <X size={18} strokeWidth={1.5} />
+              </button>
+
+              <div style={{ maxHeight: '72vh', overflowY: 'auto', borderRadius: '14px', marginBottom: '14px' }}>
+                <img
+                  src={selectedPhoto.image}
+                  alt={selectedPhoto.alt}
+                  style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '12px' }}
+                />
+              </div>
+              <h3
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  color: 'var(--royal-wine)',
+                  fontSize: '1.6rem',
+                  margin: '8px 0 4px',
+                }}
+              >
+                {selectedPhoto.caption}
+              </h3>
+              <p style={{ fontFamily: 'var(--font-heading)', fontSize: '0.86rem', color: 'var(--royal-gold-deep)' }}>
+                {selectedPhoto.tag}
+              </p>
+            </div>
+          </div>,
+          document.body
+        )}
     </section>
   );
 };

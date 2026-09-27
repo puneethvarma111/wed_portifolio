@@ -1,10 +1,16 @@
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
+import { BalajiEmblem } from './BalajiEmblem';
 
 export const HeroSection = () => {
   return (
     <section className="hero-paper-section" id="welcome" tabIndex={-1} aria-labelledby="welcome-title">
       <div className="hero-paper-inner reveal">
+        {/* Divine Lord Balaji Shankha Chakra Namam Header */}
+        <div style={{ marginBottom: '28px' }}>
+          <BalajiEmblem size="medium" showMantra={true} />
+        </div>
+
         <div className="hero-floral-frame-wrapper">
           <div className="hero-floral-arch-box">
             <img
@@ -21,8 +27,8 @@ export const HeroSection = () => {
             />
             <div className="hero-portrait-img-card">
               <img
-                src="/images/couple-arched-hero.png"
-                alt="Aarav and Meera in royal Udaipur wedding portrait"
+                src="/images/couple-arched-hero-tirupati.jpg"
+                alt="Dr. Yogita Varma and Dr. Sai Vardhan divine engagement announcement with Tirumala Gopuram"
                 className="couple-arch-photo hover-lift-img"
               />
             </div>
@@ -41,22 +47,30 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        <p className="hero-calligraphy-subtitle">✦ Together With Our Families ✦</p>
-        <p className="hero-eyebrow">UDAIPUR · 21 FEBRUARY 2027</p>
+        <p className="hero-calligraphy-subtitle">✦ Two Souls · One Journey · A Brighter Tomorrow ✦</p>
+        <p className="hero-eyebrow">TIRUPATI · 25 NOVEMBER 2026</p>
+
         <h1 id="welcome-title" className="hero-stylish-names">
-          Aarav <span className="stylish-ampersand">&amp;</span> Meera
+          Dr. Yogita <span className="stylish-ampersand">&amp;</span> Dr. Sai Vardhan
         </h1>
+
+        <div className="doctor-credentials-banner">
+          <span className="credential-pill">Dr. Yogita Varma · MBBS, MD (General Medicine)</span>
+          <span className="credential-divider">✦</span>
+          <span className="credential-pill">Dr. Sai Vardhan · MBBS, MD (Radio Diagnosis)</span>
+        </div>
+
         <p className="hero-invitation-message">
-          Under the golden sunsets of Lake Pichola and amidst the timeless splendor of Rajasthan’s heritage, we joyfully invite you to celebrate the beginning of our forever.
+          With the divine grace of Lord Sri Venkateswara Swamy and Sri Padmavathi Devi, under the sacred shadows of the Seshachalam Hills, we joyfully invite you to celebrate the holy union of our hearts in Tirupati.
         </p>
 
         <a
           className="hero-scroll-pill"
           href="#waiting"
-          aria-label="Scroll to the countdown section"
+          aria-label="Scroll to the countdown and auspicious muhurtham section"
           data-testid="link-scroll-countdown"
         >
-          <span>Explore The Celebration</span>
+          <span>Explore The Kalyanam</span>
           <ArrowDown size={14} strokeWidth={1.5} aria-hidden="true" />
         </a>
       </div>

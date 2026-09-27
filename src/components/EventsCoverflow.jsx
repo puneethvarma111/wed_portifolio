@@ -1,34 +1,60 @@
 import React, { useState, useEffect } from 'react';
-import { Clock, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Clock, MapPin, ChevronLeft, ChevronRight, Calendar } from 'lucide-react';
 
 const events = [
   {
-    title: 'Mehfil-e-Shaam',
-    date: '19 February · 7:00 pm',
-    place: 'The Courtyard',
-    description: 'An evening of old songs, new stories, and the first toast to the weekend that brought us all here.',
-    image: '/images/couple-flowers.jpg',
+    title: 'Engagement Ceremony',
+    tag: 'CEREMONY 01',
+    date: '1 November 2026 · 10:30 am - 12:00 noon',
+    place: 'Ekante Bliss, Tirupati',
+    subnote: 'Followed by Lunch',
+    description: 'Two hearts, one promise. The auspicious ring exchange and betrothal celebrating Dr. Yogita Varma & Dr. Sai Vardhan.',
+    image: '/images/couple-arched-hero-tirupati.jpg',
   },
   {
-    title: 'Rang Barse',
-    date: '20 February · 11:00 am',
-    place: 'Rang Mahal',
-    description: 'Colour, rhythm, and an open invitation to dance before the serious business of forever begins.',
+    title: 'Nalugu / Pellikuthuru',
+    tag: 'CEREMONY 02',
+    date: '22 November 2026 · 9:30 am onwards',
+    place: 'At Home',
+    subnote: 'Auspicious Pasupu Rituals',
+    description: 'Sacred turmeric, rosewater, and traditional Telugu Mangala Snanam blessings as our beloved Dr. Yogita is adorned as the bride.',
     image: '/images/event-hands.jpg',
   },
   {
-    title: 'Saat Phere',
-    date: '21 February · 5:30 pm',
-    place: 'The Lake Pavilion',
-    description: 'Seven promises beside the water, surrounded by the people who made our story possible.',
-    image: '/images/event-saat-phere.jpg',
+    title: 'Mehendi Celebration',
+    tag: 'CEREMONY 03',
+    date: '23 November 2026 · Daytime',
+    place: 'At Home',
+    subnote: 'Music & Fragrant Henna',
+    description: 'Intricate deep crimson bridal mehendi, filled with hidden names, fragrant jasmine strings, and cheerful celebration.',
+    image: '/images/couple-flowers.jpg',
   },
   {
-    title: 'Vidaai Brunch',
-    date: '22 February · 10:30 am',
-    place: 'The Garden Terrace',
-    description: 'One last slow morning together, with sunlight, sweet things, and a little reluctance to say goodbye.',
+    title: 'Sangeet & Cocktail Party',
+    tag: 'CEREMONY 04',
+    date: '23 November 2026 · 6:30 pm onwards',
+    place: 'Memories Box, Tirupati',
+    subnote: 'Music, Cocktails & Dancing',
+    description: 'An electric evening of live music, joyous family dance choreographies, cocktails, and cheerful toasts into the night!',
     image: '/images/couple-nikkah.jpg',
+  },
+  {
+    title: 'The Wedding Reception',
+    tag: 'CEREMONY 05',
+    date: '24 November 2026 · 7:30 pm onwards',
+    place: 'Rahul Convention, Tirupati',
+    subnote: 'Grand Dinner & Felicitations',
+    description: 'A magnificent royal evening welcoming guests, dignitaries, and loved ones with a sumptuous feast and musical melodies.',
+    image: '/images/golden-vimana-tirupati.jpg',
+  },
+  {
+    title: 'Sacred Kalyanam (Marriage)',
+    tag: 'CEREMONY 06',
+    date: '25 November 2026 · 8:00 am - 12:00 pm',
+    place: 'Rahul Convention, Tirupati',
+    subnote: 'Holy Muhurtham & Talambralu',
+    description: 'The divine Srinivasa Kalyanam, sacred Jeelakarra Bellam, Mangalya Dharana, and holy Saptapadi under Vedic chants and Lord Balaji’s grace.',
+    image: '/images/event-saat-phere.jpg',
   },
 ];
 
@@ -40,7 +66,7 @@ export const EventsCoverflow = () => {
     if (isPaused) return;
     const interval = window.setInterval(() => {
       setActiveIdx((prev) => (prev + 1) % events.length);
-    }, 3800);
+    }, 4200);
     return () => window.clearInterval(interval);
   }, [isPaused]);
 
@@ -62,12 +88,12 @@ export const EventsCoverflow = () => {
       onTouchEnd={() => setIsPaused(false)}
     >
       <div className="section-header-centered reveal">
-        <p className="paper-section-eyebrow">05 · CELEBRATION ITINERARY</p>
+        <p className="paper-section-eyebrow">05 · THE AUSPICIOUS ITINERARY</p>
         <h2 className="paper-section-title" id="events-title">
-          The Royal Movements
+          The Wedding Celebrations
         </h2>
         <p className="paper-section-subtitle">
-          Four extraordinary celebrations. The deck advances automatically — tap any event to explore.
+          Six joyous milestones from Engagement to the Holy Kalyanam. The deck advances automatically — tap any event to explore.
         </p>
       </div>
 
@@ -106,7 +132,7 @@ export const EventsCoverflow = () => {
                   <div className="card-image-header">
                     <img src={event.image} alt={event.title} />
                     <div className="card-image-gradient" />
-                    <span className="card-event-badge">MOVEMENT 0{idx + 1}</span>
+                    <span className="card-event-badge">{event.tag}</span>
                   </div>
 
                   <div className="card-body-content">
@@ -155,7 +181,7 @@ export const EventsCoverflow = () => {
               type="button"
               className={`coverflow-dot ${idx === activeIdx ? 'is-active' : ''}`}
               onClick={() => setActiveIdx(idx)}
-              aria-label={`Jump to event 0${idx + 1}`}
+              aria-label={`Jump to event ${idx + 1}`}
             />
           ))}
         </div>

@@ -3,23 +3,23 @@ import { Sparkles, Send, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const blessingsData = [
   {
-    quote: 'May you always find your way back to the same table.',
-    cite: 'With love, always',
+    quote: 'May the divine grace of Lord Sri Venkateswara and Goddess Sri Padmavathi Devi illuminate your lives with eternal health, prosperity, and joyous companionship.',
+    cite: 'Vedic Kalyana Ashirvadam',
     image: '/images/flower-gold.png',
   },
   {
-    quote: 'For all the days ahead: more laughter than luggage.',
-    cite: 'Your favourite people',
+    quote: 'Two dedicated doctors, two gentle hearts. May your life together be filled with healing laughter, boundless love, and a home that welcomes all.',
+    cite: 'With heartfelt love from Family',
     image: '/images/flower-gold.png',
   },
   {
-    quote: 'A beautiful beginning to a very long story.',
-    cite: 'From our hearts',
+    quote: 'May your bond be as steadfast and sacred as the holy Seven Hills of Tirumala, growing deeper with every passing sunrise.',
+    cite: 'From Our Hearts to Yours',
     image: '/images/flower-gold.png',
   },
   {
-    quote: 'May your home always hold a little light for everyone who comes to it.',
-    cite: 'A keepsake for the road',
+    quote: 'May laughter, music, and divine harmony walk with you hand-in-hand through every season of your beautiful journey together.',
+    cite: 'A Keepsake for the Road Ahead',
     image: '/images/flower-gold.png',
     keepsake: true,
   },
@@ -29,7 +29,7 @@ export const BlessingsSection = () => {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [petals, setPetals] = useState([]);
-  const [petalsCount, setPetalsCount] = useState(148);
+  const [petalsCount, setPetalsCount] = useState(251);
 
   const handleArrow = (direction) => {
     setCurrentIdx((prev) =>
@@ -41,8 +41,9 @@ export const BlessingsSection = () => {
 
   const triggerPetalsShower = () => {
     setPetalsCount((prev) => prev + 1);
-    const emojis = ['🌸', '💮', '🌹', '✨', '💛', '🌺'];
-    const newPetals = Array.from({ length: 12 }).map((_, i) => ({
+    // Sacred Akshathalu, Tulasi, Lotus, Marigold and Rose offerings
+    const emojis = ['🪷', '🌾', '🌼', '✨', '🌿', '💛', '🌸', '🌹'];
+    const newPetals = Array.from({ length: 14 }).map((_, i) => ({
       id: Date.now() + i,
       x: Math.random() * 80 + 10,
       emoji: emojis[Math.floor(Math.random() * emojis.length)],
@@ -78,12 +79,12 @@ export const BlessingsSection = () => {
       </div>
 
       <div className="section-header-centered reveal">
-        <p className="paper-section-eyebrow">07 · WORDS OF LOVE</p>
+        <p className="paper-section-eyebrow">07 · AKSHATHA &amp; ASHIRVADAM</p>
         <h2 className="paper-section-title stylish-title" id="blessings-title">
-          Blessings for the Journey
+          Divine Blessings for the Journey
         </h2>
         <p className="paper-section-subtitle">
-          Warm wishes and enduring prayers woven together for our road ahead.
+          Offer your sacred Akshathalu, warm wishes, and enduring prayers for Dr. Yogita Varma &amp; Dr. Sai Vardhan.
         </p>
       </div>
 
@@ -114,11 +115,11 @@ export const BlessingsSection = () => {
               type="button"
               className="shower-petals-btn"
               onClick={triggerPetalsShower}
-              aria-label="Shower flower petals"
+              aria-label="Offer sacred Akshatha and flower petals"
             >
               <Sparkles size={14} className="sparkle-icon" />
-              <span>Offer Petals &amp; Love</span>
-              <span className="petals-badge">🌸 {petalsCount}</span>
+              <span>Offer Akshatha &amp; Petals</span>
+              <span className="petals-badge">🪷 {petalsCount}</span>
             </button>
           </div>
         </div>
@@ -148,16 +149,16 @@ export const BlessingsSection = () => {
       <form className="blessing-guestbook-form reveal" onSubmit={handleSubmit}>
         {isSubmitted ? (
           <div className="guestbook-success-box">
-            <span className="success-icon">🌸</span>
+            <span className="success-icon">🪷</span>
             <p>
-              Your beautiful blessing has joined our collection. We carry your warm love in our hearts!
+              Your auspicious blessing has been offered! Dr. Yogita &amp; Dr. Sai Vardhan carry your warm love and prayers in their hearts.
             </p>
           </div>
         ) : (
           <>
-            <h3 className="form-heading">Leave a Warm Blessing</h3>
+            <h3 className="form-heading">Leave a Warm Ashirvadam</h3>
             <p className="form-subheading">
-              Sign our digital royal guestbook for Aarav &amp; Meera
+              Sign the digital wedding guestbook for Dr. Yogita &amp; Dr. Sai Vardhan
             </p>
 
             <div className="form-fields-row">
@@ -167,18 +168,18 @@ export const BlessingsSection = () => {
                   id="guest-name"
                   name="name"
                   required
-                  placeholder="How should we remember you?"
+                  placeholder="How should the couple remember you?"
                 />
               </div>
 
               <div className="field-group full-width">
-                <label htmlFor="guest-note">Your Note or Memory</label>
+                <label htmlFor="guest-note">Your Prayer, Wish, or Memory</label>
                 <textarea
                   id="guest-note"
                   name="note"
                   required
                   rows={3}
-                  placeholder="A wish for the couple, a fond memory, or a heartfelt toast..."
+                  placeholder="A heartfelt blessing, a warm memory, or loving wish for the couple..."
                 />
               </div>
             </div>

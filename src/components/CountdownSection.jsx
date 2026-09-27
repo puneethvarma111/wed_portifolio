@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function useCountdown(targetIso = '2027-02-21T17:00:00+05:30') {
+function useCountdown(targetIso = '2026-11-25T08:00:00+05:30') {
   const getRemainingTime = () => {
     const diff = Math.max(0, new Date(targetIso).getTime() - Date.now());
     return {
@@ -24,7 +24,7 @@ function useCountdown(targetIso = '2027-02-21T17:00:00+05:30') {
 }
 
 export const CountdownSection = () => {
-  const timeLeft = useCountdown('2027-02-21T17:00:00+05:30');
+  const timeLeft = useCountdown('2026-11-25T08:00:00+05:30');
 
   const dials = [
     { label: 'DAYS', value: timeLeft.days, max: 365 },
@@ -36,12 +36,12 @@ export const CountdownSection = () => {
   return (
     <section className="paper-section countdown-celestial-section reveal" id="waiting" aria-labelledby="waiting-title">
       <div className="section-header-centered">
-        <p className="paper-section-eyebrow">01 · THE CELEBRATION AWAITS</p>
+        <p className="paper-section-eyebrow">01 · THE AUSPICIOUS MUHURTHAM</p>
         <h2 className="paper-section-title" id="waiting-title">
-          Every Second Closer to Forever
+          Counting Every Sacred Second
         </h2>
         <p className="paper-section-subtitle">
-          Counting down to a magical royal weekend of music, sacred rituals, and unending laughter.
+          Awaiting the sacred Kalyanam, Mangalya Dharana, and Akshatha blessings on Wednesday, 25 November 2026 at Rahul Convention, Tirupati.
         </p>
       </div>
 
