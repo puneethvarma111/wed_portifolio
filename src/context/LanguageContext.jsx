@@ -16,7 +16,7 @@ export const LanguageProvider = ({ children }) => {
         return saved;
       }
     }
-    return 'en';
+    return 'te'; // Default to Telugu as requested
   });
 
   const setLanguage = (newLang) => {
@@ -44,7 +44,7 @@ export const LanguageProvider = ({ children }) => {
     }
   }, [language]);
 
-  const t = translations[language] || translations.en;
+  const t = translations[language] || translations.te;
   const isTelugu = language === 'te';
 
   return (
